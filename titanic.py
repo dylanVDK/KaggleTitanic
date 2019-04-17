@@ -2,7 +2,6 @@
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import MinMaxScaler
@@ -229,7 +228,7 @@ if __name__ == '__main__':
     tree = randomForestTree(dataTrain, dataSurvived)
     # Prediction
     showImportance(dataTrain)
-    # affutage and remove labels
+    # affutage des labels
     model = SelectFromModel(tree, prefit=True)
     dataTrainReduce = model.transform(dataTrain)
     dataTestReduce = model.transform(dataTest)
@@ -238,10 +237,3 @@ if __name__ == '__main__':
     predict = getPredict(tree, dataTestReduce)
 
     renderSurvived(predict)
-
-    test = dataTest
-    # dfPredict = pd.DataFrame(predict)
-    # test = pd.concat([test, dfPredict], axis=1)
-    test['Survived'] = pd.DataFrame(predict)
- #   test.Survived[test.Sex].value_counts().plot(kind='bar', figsize=(5, 5))
-    print(predict)
