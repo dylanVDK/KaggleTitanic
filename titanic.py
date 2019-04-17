@@ -7,10 +7,6 @@ from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.feature_selection import SelectFromModel
 
-# pour afficher les graph direct
-from matplotlib import interactive
-interactive(True)
-
 def status(feature):
     print('Step -->     ', feature, ': 100%')
 
