@@ -186,14 +186,6 @@ def renderSurvived(predict):
     print("\n\nPrediction Head \n", res.head())
     print("\n\nPrediction Tail \n", res.tail())
 
-def showImportance(dataTrain):
-    features = pd.DataFrame()
-    features['feature'] = dataTrain.columns
-    features['importance'] = tree.feature_importances_
-    features.sort_values(by=['importance'], ascending=True, inplace=True)
-    features.set_index('feature', inplace=True)
-    features.plot(kind='barh', figsize=(5, 5))
-
 
 if __name__ == '__main__':
     # Prepare Data
@@ -222,8 +214,6 @@ if __name__ == '__main__':
     dataTestSurvived = testDataSurvived(data_std)
     # Algorithme
     tree = randomForestTree(dataTrain, dataSurvived)
-    # Prediction
-    showImportance(dataTrain)
     # affutage des labels
     model = SelectFromModel(tree, prefit=True)
     dataTrainReduce = model.transform(dataTrain)
